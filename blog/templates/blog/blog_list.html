@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="card-group">
+    <ul>
+        {% for blog in blog_list %}
+<!-- using inline template for showing list of blogs-->
+        {%include 'blog/list-inline.html' with blog_post=blog detail=False truncatewords=True%}
+
+        {%endfor%}
+    </ul>
+</div>
+{% endblock %}

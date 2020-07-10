@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block title%} usama shab {%endblock%}
+
+{%block content%}
+    <h1 style="color:red;">Are you Sure you want to delete ?  </h1>
+    <h2>{{blog.title}}</h2>
+<form method="post">
+    {%csrf_token%}
+    <button class="btn btn-danger">delete</button>
+</form>
+
+
+{%endblock%}

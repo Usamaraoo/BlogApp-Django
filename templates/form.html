@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+{% block content %}
+<!--this if check if the form is contact or edit form
+ if it has title than it is update or edit form-->
+   {% if title%}
+        <h1>{{title}}</h1>
+{%else%}
+        <h1>Contacts</h1>
+{%endif%}
+<form method="POST" action="/">
+    {%csrf_token%}
+   {{form.as_p}}
+    <button class="btn btn-primary ">Send </button>
+</form>
+{% endblock %}

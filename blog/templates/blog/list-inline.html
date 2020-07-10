@@ -1,0 +1,28 @@
+<!--this is div for both list view and blog detail view so here we are differentiating them
+by these conditions
+1 truncatewords
+2 detail
+3 publish_date
+-->
+
+<div class="card m-4 {%if not blog_post.publish_date %} bg-dark text-light {%endif%}"
+style=" background-color: #F8C471;"
+>
+    <div class="card-body">
+        <small>{{blog_post.publish_date}}</small>
+        <h5 class="card-title">{{blog_post.title}}</h5>
+        <p class="card-text">
+            {%if truncatewords%}
+            {{blog_post.content|linebreaks|truncatewords:30}}
+            {%else%}
+            {{blog_post.content}}
+            {%endif%}
+        </p>
+        {%if not detail%}
+        {%if not blog_post.publish_date %}<strong>Draft</strong> <br>{%endif%}
+        <strong style="color:#F7791D;">{{blog_post.type}} related</strong>
+        <br>
+        <a href="{{blog_post.get_absolute_url}}" class="btn btn-warning">View </a>
+        {%endif%}
+    </div>
+</div>

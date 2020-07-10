@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%block title%} blog{%endblock%}
+<div class="row">
+{%block content%}
+{%include 'blog/list-inline.html' with blog_post=blog_detail detail=True  truncatewords=False%}
+<h6 style=" color: purple;"><strong>auther : {{blog_detail.user}}</strong></h6>
+    {% if request.user.is_authenticated%}
+        {%if request.user.is_staff%}
+
+            <br>
+            <h5><a href="{{blog_detail.get_edit_url}}">Edit</a></h5>
+            <h5><a href="{{blog_detail.get_delete_url}}">Delete</a></h5>
+
+        {%endif%}
+    {%endif%}
+</div>
+{%endblock%}
